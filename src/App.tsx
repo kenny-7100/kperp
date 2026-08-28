@@ -1,11 +1,11 @@
-import OrderBook from './components/OrderBook'
+import OrderBook from './components/OrderBook';
 
 function App() {
   return <main>
     <div>
       <OrderBook />
     </div>
-  </main>
+  </main>;
 }
 
-export default App
+export default App;
