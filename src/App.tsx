@@ -1,6 +1,10 @@
+import OrderBook from './components/OrderBook'
+
 function App() {
   return <main>
-    <div>Hello</div>
+    <div>
+      <OrderBook />
+    </div>
   </main>
 }
 
