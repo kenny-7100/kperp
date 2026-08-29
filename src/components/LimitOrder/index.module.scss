@@ -9,9 +9,10 @@
 }
 
 .titleBar {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 12px;
   align-items: center;
-  justify-content: space-between;
   min-height: 48px;
   padding: 0 16px;
   border-bottom: 1px solid #2a2d35;
@@ -22,9 +23,46 @@
     font-weight: 600;
   }
 
-  span {
+  .symbol {
     color: #8e939e;
     font-size: 11px;
+  }
+}
+
+.externalPrice {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+  height: 30px;
+  padding: 0 8px;
+  background: #111319;
+  border: 1px solid #30343e;
+  border-radius: 4px;
+
+  &:focus-within {
+    border-color: #5b6577;
+  }
+
+  span,
+  strong {
+    color: #8e939e;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  input {
+    min-width: 0;
+    width: 100%;
+    padding: 0;
+    color: #ffffff;
+    font: inherit;
+    font-size: 11px;
+    text-align: right;
+    background: transparent;
+    border: 0;
+    outline: 0;
   }
 }
 

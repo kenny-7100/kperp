@@ -52,8 +52,11 @@ const formatBalance = (value: number, maximumFractionDigits = 2) => (
 
 const LimitOrder = ({ currentAccount }: LimitOrderProps) => {
   const [side, setSide] = useState<Side>('buy');
+  const [externalPriceInput, setExternalPriceInput] = useState(DEFAULT_PRICE_INPUT);
+  const [externalPrice, setExternalPrice] = useState(DEFAULT_PRICE);
   const [priceInput, setPriceInput] = useState(DEFAULT_PRICE_INPUT);
   const [price, setPrice] = useState(DEFAULT_PRICE);
+  const [isPriceEdited, setIsPriceEdited] = useState(false);
   const [amountInput, setAmountInput] = useState('');
   const [amount, setAmount] = useState(0);
   const [amountUnit, setAmountUnit] = useState<AmountUnit>('BTC');
@@ -95,9 +98,23 @@ const LimitOrder = ({ currentAccount }: LimitOrderProps) => {
       : formatFixed(nextAmount, amountUnit === 'BTC' ? 4 : 0));
   };
 
+  const changeExternalPrice = (value: string) => {
+    if (!FOUR_DECIMAL_INPUT.test(value)) return;
+
+    const nextExternalPrice = parseFixed(value, 4);
+    setExternalPriceInput(value);
+    setExternalPrice(nextExternalPrice);
+
+    if (!isPriceEdited) {
+      setPriceInput(value);
+      setPrice(nextExternalPrice);
+    }
+  };
+
   const changePrice = (value: string) => {
     if (!FOUR_DECIMAL_INPUT.test(value)) return;
 
+    setIsPriceEdited(true);
     setPriceInput(value);
     setPrice(parseFixed(value, 4));
   };
@@ -136,7 +153,18 @@ const LimitOrder = ({ currentAccount }: LimitOrderProps) => {
     <section className={styles.limitOrder} aria-label="Limit order">
       <header className={styles.titleBar}>
         <h2>Limit Order</h2>
-        <span>BTC / USDT</span>
+        <label className={styles.externalPrice}>
+          <span>Market</span>
+          <input
+            data-fixed-price={externalPrice}
+            inputMode="decimal"
+            onChange={(event) => changeExternalPrice(event.target.value)}
+            type="text"
+            value={externalPriceInput}
+          />
+          <strong>USDT</strong>
+        </label>
+        <span className={styles.symbol}>BTC / USDT</span>
       </header>
 
       <div className={styles.sideControl} aria-label="Order side">
