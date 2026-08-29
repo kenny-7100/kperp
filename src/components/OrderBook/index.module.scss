@@ -1,3 +1,144 @@
 .orderBook {
-  font-size: 12px;
+  width: min(100%, 440px);
+  overflow: hidden;
+  color: #e7e9ee;
+  background: #17191f;
+  border: 1px solid #2a2d35;
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.titleBar,
+.columnHeaders,
+.row,
+.spread,
+.footer {
+  display: grid;
+  align-items: center;
+}
+
+.titleBar {
+  grid-template-columns: 1fr auto;
+  min-height: 48px;
+  padding: 0 16px;
+  border-bottom: 1px solid #2a2d35;
+
+  h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+.symbol,
+.columnHeaders,
+.footer {
+  color: #8e939e;
+}
+
+.symbol {
+  font-size: 11px;
+}
+
+.columnHeaders,
+.row {
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 12px;
+  padding: 0 16px;
+
+  span:nth-child(n + 2) {
+    text-align: right;
+  }
+}
+
+.columnHeaders {
+  min-height: 34px;
+  font-size: 11px;
+}
+
+.rows {
+  padding: 2px 0;
+}
+
+.row {
+  position: relative;
+  min-height: 22px;
+  line-height: 22px;
+
+  > span:not(.depth) {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:hover {
+    background: #22252d;
+  }
+}
+
+.depth {
+  position: absolute;
+  inset: 1px 0 1px auto;
+  pointer-events: none;
+}
+
+.ask {
+  background: rgb(239 83 80 / 12%);
+}
+
+.bid {
+  background: rgb(38 166 154 / 12%);
+}
+
+.askPrice {
+  color: #f06f6c;
+}
+
+.bidPrice {
+  color: #43b8aa;
+}
+
+.spread {
+  grid-template-columns: 1fr auto;
+  min-height: 38px;
+  padding: 0 16px;
+  background: #1d2027;
+  border-top: 1px solid #2a2d35;
+  border-bottom: 1px solid #2a2d35;
+
+  strong {
+    color: #e7e9ee;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  span {
+    color: #8e939e;
+    font-size: 11px;
+  }
+}
+
+.footer {
+  grid-template-columns: 1fr auto;
+  min-height: 38px;
+  padding: 0 16px;
+  border-top: 1px solid #2a2d35;
+  font-size: 11px;
+
+  strong {
+    color: #c8cbd2;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 420px) {
+  .columnHeaders,
+  .row {
+    column-gap: 6px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .columnHeaders {
+    font-size: 10px;
+  }
 }
