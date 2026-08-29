@@ -1,0 +1,257 @@
+.limitOrder {
+  width: min(100%, 440px);
+  overflow: hidden;
+  color: #e7e9ee;
+  background: #17191f;
+  border: 1px solid #2a2d35;
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 0 16px;
+  border-bottom: 1px solid #2a2d35;
+
+  h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  span {
+    color: #8e939e;
+    font-size: 11px;
+  }
+}
+
+.sideControl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 12px 16px 0;
+
+  button {
+    height: 36px;
+    color: #8e939e;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    background: #20232a;
+    border: 1px solid #30343e;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .activeBuy {
+    color: #43b8aa;
+    background: rgb(38 166 154 / 12%);
+    border-color: #328f84;
+  }
+
+  .activeSell {
+    color: #f06f6c;
+    background: rgb(239 83 80 / 12%);
+    border-color: #a64d4b;
+  }
+}
+
+.formBody {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+}
+
+.balanceRow,
+.amountHeader,
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.balanceRow,
+.summary {
+  color: #8e939e;
+  font-size: 11px;
+
+  strong {
+    color: #cfd2d9;
+    font-weight: 500;
+  }
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+
+  > span,
+  .amountHeader > span {
+    color: #aeb2bc;
+  }
+}
+
+.amountHeader {
+  color: #aeb2bc;
+}
+
+.inputBox {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 12px;
+  background: #111319;
+  border: 1px solid #30343e;
+  border-radius: 4px;
+
+  &:focus-within {
+    border-color: #5b6577;
+  }
+
+  input {
+    min-width: 0;
+    height: 40px;
+    padding: 0;
+    color: #ffffff;
+    font: inherit;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+    background: transparent;
+    border: 0;
+    outline: 0;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      margin: 0;
+      appearance: none;
+    }
+  }
+
+  strong {
+    color: #aeb2bc;
+    font-size: 11px;
+    font-weight: 500;
+  }
+}
+
+.unitControl {
+  display: flex;
+  padding: 2px;
+  background: #111319;
+  border-radius: 4px;
+
+  button {
+    height: 25px;
+    padding: 0 9px;
+    color: #7f8490;
+    font: inherit;
+    font-size: 10px;
+    background: transparent;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .activeUnit {
+    color: #ffffff;
+    background: #343944;
+  }
+}
+
+.sliderBlock {
+  display: grid;
+  gap: 8px;
+
+  input {
+    width: 100%;
+    accent-color: #4c8dff;
+    cursor: pointer;
+  }
+}
+
+.percentageButtons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+
+  button {
+    height: 26px;
+    color: #8e939e;
+    font: inherit;
+    font-size: 10px;
+    background: #20232a;
+    border: 1px solid #30343e;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+      border-color: #4a505d;
+    }
+  }
+}
+
+.summary {
+  min-height: 30px;
+  padding-top: 4px;
+  border-top: 1px solid #282b33;
+}
+
+.buyButton,
+.sellButton {
+  height: 42px;
+  color: #ffffff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buyButton {
+  background: #248f83;
+}
+
+.sellButton {
+  background: #c44e4b;
+}
+
+.buyButton:disabled,
+.sellButton:disabled {
+  color: #777c86;
+  background: #292c33;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.jsonOutput {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding-top: 2px;
+
+  > span {
+    color: #8e939e;
+    font-size: 11px;
+  }
+
+  pre {
+    max-width: 100%;
+    margin: 0;
+    overflow-x: auto;
+    padding: 12px;
+    color: #cfd2d9;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    line-height: 1.6;
+    background: #111319;
+    border: 1px solid #30343e;
+    border-radius: 4px;
+    white-space: pre;
+  }
+}
