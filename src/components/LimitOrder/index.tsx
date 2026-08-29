@@ -88,7 +88,8 @@ const LimitOrder = ({ currentAccount }: LimitOrderProps) => {
     ? Math.floor((amount * price) / CALCULATION_SCALE)
     : btcAmount;
   const estimatedUnit = amountUnit === 'BTC' ? 'USDT' : 'BTC';
-  const isOrderDisabled = price <= 0 || amount <= 0 || btcAmount <= 0;
+  const exceedsBalance = amount > maxAmount;
+  const isOrderDisabled = price <= 0 || amount <= 0 || btcAmount <= 0 || exceedsBalance;
 
   const updateAmountFromPercentage = (nextPercentage: number) => {
     const nextAmount = Math.floor((maxAmount * nextPercentage) / 100);
@@ -241,6 +242,12 @@ const LimitOrder = ({ currentAccount }: LimitOrderProps) => {
           />
           <strong>{amountUnit}</strong>
         </label>
+
+        {exceedsBalance && (
+          <p className={styles.errorMessage} role="alert">
+            Insufficient balance. Maximum {formatFixed(maxAmount, amountUnit === 'BTC' ? 4 : 0)} {amountUnit}.
+          </p>
+        )}
 
         <div className={styles.sliderBlock}>
           <input
