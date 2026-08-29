@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: 0 24px;
+  background: #17191f;
+  border-bottom: 1px solid #2a2d35;
+}
+
+.brand {
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.currentAccount {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  color: #8e939e;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+
+  > strong {
+    color: #ffffff;
+    font-size: 13px;
+  }
+
+  b {
+    color: #d9dce3;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 560px) {
+  .header {
+    align-items: flex-start;
+    padding: 14px 16px;
+  }
+
+  .currentAccount {
+    gap: 4px;
+    align-items: flex-end;
+    flex-direction: column;
+  }
+}
